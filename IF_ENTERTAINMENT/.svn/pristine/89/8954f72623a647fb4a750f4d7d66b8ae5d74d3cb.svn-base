@@ -1,0 +1,98 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<div class="gap no-gap">
+	<div class="inner-bg">
+		<div class="element-title">
+			<h4>IR 행사일정</h4>
+<div class="col-md-12">
+							  <div class="buttonz">
+				<div class="route-map">
+                      <form action="#" onSubmit="calcRoute();return false;" id="routeForm">
+                        <input type="text" placeholder="게시글 검색" id="routeStart" value="">
+                        <button type="submit">검색하기</button>
+						<button type="submit">글 작성</button>                        
+						</form>
+                    </div>
+                    </div>
+							</div>			
+		</div>
+		<table class="cart-table table table-responsive">
+			<thead>
+				<tr>
+					<th>게시글 번호</th>
+					<th>제목</th>
+					<th>작성일</th>
+					<th>조회수</th>
+					<th>작성자</th>
+					<th>상태</th>
+					<th>삭제</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>#225801</td>
+					<td>Tim Sebastian</td>
+					<td><img src="images/resources/prod-cart-1.jpg" alt=""></td>
+					<td>Still Gray Chair</td>
+					<td>61</td>
+					<td><span class="failed">삭제</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225833</td>
+					<td>Genelia Jobs</td>
+					<td><img src="images/resources/prod-cart-2.jpg" alt=""></td>
+					<td>Gold Wooden Chair</td>
+					<td>01</td>
+					<td><span class="paid">게시중</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225821</td>
+					<td>Tim Sebastian</td>
+					<td><img src="images/resources/prod-cart-3.jpg" alt=""></td>
+					<td>Pure Wooden chair</td>
+					<td>30</td>
+					<td><span class="pending">숨김처리</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225859</td>
+					<td>steam jobs</td>
+					<td><img src="images/resources/prod-cart-4.jpg" alt=""></td>
+					<td>Still Gray Chair</td>
+					<td>30</td>
+					<td><span class="failed">삭제</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225801</td>
+					<td>Tim Sebastian</td>
+					<td><img src="images/resources/prod-cart-1.jpg" alt=""></td>
+					<td>Still Gray Chair</td>
+					<td>61</td>
+					<td><span class="failed">삭제</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225833</td>
+					<td>Genelia Jobs</td>
+					<td><img src="images/resources/prod-cart-2.jpg" alt=""></td>
+					<td>Gold Wooden Chair</td>
+					<td>01</td>
+					<td><span class="paid">삭제</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+				<tr>
+					<td>#225859</td>
+					<td>steam jobs</td>
+					<td><img src="images/resources/prod-cart-4.jpg" alt=""></td>
+					<td>Still Gray Chair</td>
+					<td>30</td>
+					<td><span class="failed">삭제</span></td>
+					<td><a href="#" title=""><i class="icon-trash"></i></a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

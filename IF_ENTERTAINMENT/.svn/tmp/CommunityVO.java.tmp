@@ -1,0 +1,20 @@
+package kr.or.ddit.vo.community;
+
+<<<<<<< .mine
+
+||||||| .r406015
+=======
+import java.util.Date;
+
+>>>>>>> .r406567
+import lombok.Data;
+
+@Data
+public class CommunityVO {
+	private int cjNo;
+	private Date cjDate;
+	private int userNo;
+	private String agId;
+	private String field;
+
+}

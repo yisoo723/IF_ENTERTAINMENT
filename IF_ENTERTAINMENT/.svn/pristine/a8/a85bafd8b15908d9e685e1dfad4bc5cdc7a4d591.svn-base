@@ -1,0 +1,396 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b0e81bb721b9e121366ca32dad175741&libraries=services"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>Web Admin panel</title>
+<link rel="icon" type="image/png" href="images/fav.png">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/font-awesome.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/themify-icons.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/line-icons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/animate.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/color.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css1/responsive.css">
+
+<style type="text/css">
+#genderStyle {
+	height: 51px;
+	width: 410px;
+	background-color: white;
+	margin-top: 20px;
+	display: flex;
+	margin-top: 30px;
+}
+
+#genderStyle_{
+	display: flex;
+}
+
+#genderStyle_ input {
+	font-size: 10px;
+}
+
+/* .gender_icon { */
+/* 	display:inline-block; */
+/* 	font-size: 20px; */
+/* 	margin-left: 20px; */
+/* 	margin-top: 10px; */
+/* 	margin-right: 20px; */
+/* } */
+
+.gender_radio {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.gender_radio .male {
+	margin-right: 150px;
+}
+
+.gender_M, .gender_F {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.gender_M i {
+	font-size: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.gender_F i {
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.gender_M span, .gender_F span {
+	margin-left: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+	
+}
+
+
+#alarmStyle {
+	height: 51px;
+	width: 410px;
+	background-color: white;
+	margin-top: 20px;
+	display: flex;
+	margin-top: 30px;
+}
+
+#alarmStyle_{
+	display: flex;
+}
+
+#alarmStyle_ input {
+	font-size: 10px;
+	margin-left: -30px;
+}
+
+
+.alarm_radio {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.alarm_radio .male {
+	margin-right: 50px;
+}
+
+.alarm_M, .alarm_F {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.alarm_M i {
+	font-size: 20px;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.alarm_F i {
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.alarm_M span, .alarm_F span {
+	margin-left: 10px;
+	margin-top: 10px;
+		width: 110px;
+}
+
+.mobile {}
+
+</style>
+
+</head>
+<body>
+<!-- Start Page Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+<div class="panel-layout">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="admin-lock" style="height: 100%; overflow: auto;"> 
+          <div class="admin-form">
+            <div class="logo"><img src="images/logo2.png" alt=""></div>
+            <h4>Sign Up Account</h4>
+            <span>Please enter your user information</span>
+            
+            <form method="post">
+              <label><i class="fa fa-user-circle-o"></i></label>
+              <input type="text" placeholder="Complete Name">
+              <label><i class="fa fa-envelope"></i></label>
+<!--               <input type="text" placeholder="Email Address"> -->
+<!--               <label><i class="fa fa-unlock-alt"></i></label> -->
+              <input type="text" placeholder="Password">
+              <label><i class="fa fa-unlock-alt"></i></label>
+              <input type="text" placeholder="Confirm Password">
+			
+		
+              <label for="email"><i class="fa fa-envelope" aria-hidden="true"></i></label>
+              <div class="input-group">
+			<input type="text" class="form-control" name="userEmail1" id="userEmail1" 
+			placeholder="email" style="height: 38px;">
+
+					<select class="form-control" name="userEmail2" id="userEmail2" >
+					<option>@naver.com</option>
+					<option>@daum.net</option>
+					<option>@gmail.com</option>
+					<option>@hanmail.com</option>
+					<option>@yahoo.co.kr</option>
+				</select> 
+				
+			</div>
+              <button type="button" class="btn btn-primary" id="mail-Check-Btn">이메일 전송</button>
+              <div class="mail-check-box" style="margin-bottom: 35px;">인증번호 입력 <br/>
+              
+	              <input class="form-control mail-check-input"
+					placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
+              </div>
+
+
+			<label for="birthdate" style="margin-right: -20px;"><i class="fa fa-birthday-cake" aria-hidden="true" style="margin-bottom: 50px;"></i> 생년월일</label>
+			<div id="birthdate" style="display: flex; margin-bottom: 30px;">
+			    <select id="birth-year" name="birth-year" style="margin-right: 10px;">
+			        <option value="">년도</option>
+			        <!-- 여기에 년도 옵션들을 추가할 수 있습니다. -->
+			    </select>
+			    <select id="birth-month" name="birth-month" style="margin-right: 10px;">
+			        <option value="">월</option>
+			        <option value="1">1월</option>
+			        <option value="2">2월</option>
+			        <option value="3">3월</option>
+			        <option value="4">4월</option>
+			        <option value="5">5월</option>
+			        <option value="6">6월</option>
+			        <option value="7">7월</option>
+			        <option value="8">8월</option>
+			        <option value="9">9월</option>
+			        <option value="10">10월</option>
+			        <option value="11">11월</option>
+			        <option value="12">12월</option>
+			    </select>
+			    <select id="birth-day" name="birth-day">
+			        <option value="">일</option>
+			        <!-- 여기에 일 옵션들을 추가할 수 있습니다. -->
+			    </select>
+			</div>
+			<div id="birthdate-input" style="display: flex;">
+			    <input type="text" id="birth-year-input" name="birth-year-input" placeholder="년도" style="margin-right: 10px;">
+			    <input type="text" id="birth-month-input" name="birth-month-input" placeholder="월" style="margin-right: 10px;">
+			    <input type="text" id="birth-day-input" name="birth-day-input" placeholder="일">
+			</div>
+			
+			              
+              <div id="genderStyle">
+              	<div id="genderStyle_">
+					 <div class="gender_radio">
+					 	<div class="gender_M">
+			            <i class="fa fa-male" aria-hidden="true"></i> 
+					      <span> male</span> 
+					      <input type="radio" class="male" id="memGenderM" name="memGender" value="M" checked="checked">
+					 	</div>
+					 	<div class="gender_F">
+						<i class="fa fa-female" aria-hidden="true"></i>
+					      <span>female</span>  
+					      <input type="radio" id="memGenderF" name="memGender" value="F">
+					 	</div>
+					 </div>
+			     </div>
+              </div>
+			  <br/>
+			 <label for="address"><i class="fa fa-address-book" aria-hidden="true"></i></label>
+
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" id="memPostCode"
+					name="memPostcode" value="${member.memPostcode }"
+					style="margin-bottom: 10px; height: 41px;" placeholder="지번">
+			</div>
+				<button type="button" class="btn btn-secondary btn-flat"
+					onclick="DaumPostcode()" style="margin-bottom: 10px;">우편번호 찾기</button>
+			<label for="address"><i class="fa fa-address-book" aria-hidden="true"></i></label>
+			<input type="text" class="form-control" id="memAddress1"
+				name="memAddress1" value="${member.memAddress1 }"
+				placeholder="주소입력" style="margin-bottom: 10px; height: 41px;"> 
+			<label for="address"><i class="fa fa-address-book" aria-hidden="true"></i></label>	
+			<input type="text" class="form-control" id="memAddress2"
+				name="memAddress2" value="${member.memAddress2 }"
+				placeholder="상세주소를 입력해주세요"
+				style="margin-bottom: 10px; height: 41px;">
+
+
+			  <label class="mobile"><i class="fa fa-mobile" aria-hidden="true" style="font-size: 30px;" ></i></label>
+              <input type="text" placeholder="telNo">
+              
+             <div id="alarmStyle">
+              	<div id="alarmStyle_">
+					 <div class="alarm_radio">
+					 	<div class="alarm_M">
+			            <i class="fa fa-bell-o" aria-hidden="true"></i> 
+					      <span> 동의</span> 
+					      <input type="radio" class="male" id="memGenderM" name="memGender" value="M" checked="checked">
+					 	</div>
+					 	<div class="alarm_F">
+					      <span>비동의</span>  
+					      <input type="radio" id="memGenderF" name="memGender" value="F">
+					 	</div>
+					 </div>
+			     </div>
+              </div>
+			<div class="form-group" style="margin-left: -16px;">
+			    <label for="recaptcha" class="control-label col-sm-2"><span class="rq"></span></label>
+			    <div class="col-sm-6">
+			        <div class="g-recaptcha" data-sitekey="6LcKxUgpAAAAAAN-TGBKRTy8hzXUodck7LrXEUoA"></div>
+			        <span id="recaptchaError" class="rq"></span>
+			    </div>
+			</div>
+
+
+			<input type="checkbox" id="checkbox">
+              <label for="checkbox">I accept the <a href="#" title="">terms & Conditions</a></label>
+              <button type="submit">sign up</button>
+            </form>
+            <span>Already a member? <a href="#" title="">Sign in</a></span> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+function DaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+            }
+
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('memPostCode').value = data.zonecode;
+            document.getElementById("memAddress1").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("memAddress2").focus();
+        }
+    }).open();
+}
+
+	//년도, 월, 일을 선택하는 <select> 요소들
+	const yearSelect = document.getElementById('birth-year');
+	const monthSelect = document.getElementById('birth-month');
+	const daySelect = document.getElementById('birth-day');
+	
+	// 년도, 월, 일을 입력하는 <input> 요소들
+	const yearInput = document.getElementById('birth-year-input');
+	const monthInput = document.getElementById('birth-month-input');
+	const dayInput = document.getElementById('birth-day-input');
+	
+	// 년도, 월, 일을 선택했을 때의 이벤트 리스너 설정
+	yearSelect.addEventListener('change', updateInput);
+	monthSelect.addEventListener('change', updateInput);
+	daySelect.addEventListener('change', updateInput);
+	
+	// 년도, 월, 일을 입력하는 <input> 요소에 값을 업데이트하는 함수
+	function updateInput() {
+	    // 선택한 년도, 월, 일 값 가져오기
+	    const selectedYear = yearSelect.value;
+	    const selectedMonth = monthSelect.value;
+	    const selectedDay = daySelect.value;
+	
+	    // <input> 요소에 값을 설정하기
+	    yearInput.value = selectedYear;
+	    monthInput.value = selectedMonth;
+	    dayInput.value = selectedDay;
+	}
+	
+	// 현재 년도부터 100년 전까지의 옵션 추가
+	const currentYear = new Date().getFullYear();
+	for (let i = currentYear; i >= currentYear - 100; i--) {
+	    const option = document.createElement('option');
+	    option.value = i;
+	    option.textContent = i + '년';
+	    yearSelect.appendChild(option);
+	}
+	
+	// 월 옵션 추가
+	for (let i = 1; i <= 12; i++) {
+	    const option = document.createElement('option');
+	    option.value = i;
+	    option.textContent = i + '월';
+	    monthSelect.appendChild(option);
+	}
+	
+	// 일 옵션 추가 (1일부터 31일)
+	for (let i = 1; i <= 31; i++) {
+	    const option = document.createElement('option');
+	    option.value = i;
+	    option.textContent = i + '일';
+	    daySelect.appendChild(option);
+	}
+</script>
+
+<script src="${pageContext.request.contextPath }/resources/js1/jquery.js"></script> 
+<script src="${pageContext.request.contextPath }/resources/js1/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js1/custom.js"></script>
+</body>
+</html>
